@@ -1,5 +1,7 @@
 package com.example.mathgamebysam
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.inputmethodservice.Keyboard
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -55,8 +58,16 @@ fun QuestionsScreen(navController: NavHostController) {
             var option2 = options[1]
             var option3 = options[2]
             var option4 = options[3]
+            val context = LocalContext.current // Get the Context using LocalContext
+            val sharedPreferences = remember {
+                context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+            }
             Button(
                 onClick = {
+                    if (id >= questions.questions.size) {
+                        questions.saveRecordToSharedPreference(sharedPreferences, sign, score)
+                        navController.navigate("main_screen")
+                    }
                     if (questions.checkAnswer(id, option1))
                         score ++
                     id ++
@@ -66,6 +77,10 @@ fun QuestionsScreen(navController: NavHostController) {
             }
             Button(
                 onClick = {
+                    if (id >= questions.questions.size) {
+                        questions.saveRecordToSharedPreference(sharedPreferences, sign, score)
+                        navController.navigate("main_screen")
+                    }
                     if (questions.checkAnswer(id, option2))
                         score ++
                     id ++
@@ -75,6 +90,10 @@ fun QuestionsScreen(navController: NavHostController) {
             }
             Button(
                 onClick = {
+                    if (id >= questions.questions.size) {
+                        questions.saveRecordToSharedPreference(sharedPreferences, sign, score)
+                        navController.navigate("main_screen")
+                    }
                     if (questions.checkAnswer(id, option3))
                         score ++
                     id ++
@@ -84,6 +103,10 @@ fun QuestionsScreen(navController: NavHostController) {
             }
             Button(
                 onClick = {
+                    if (id >= questions.questions.size) {
+                        questions.saveRecordToSharedPreference(sharedPreferences, sign, score)
+                        navController.navigate("main_screen")
+                    }
                     if (questions.checkAnswer(id, option4))
                         score ++
                     id ++

@@ -1,5 +1,7 @@
 package com.example.mathgamebysam.model
 
+import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import kotlin.random.Random
 
 class Questions {
@@ -32,8 +34,15 @@ class Questions {
         return options
     }
     fun checkAnswer(id: Int, ans: Int) : Boolean {
-        if (questions[id].second == ans)
-            return true
-        return false
+        return questions[id].second == ans
+    }
+    @SuppressLint("CommitPrefEdits")
+    fun saveRecordToSharedPreference(sharedPreferences: SharedPreferences, sign: String, score: Int, name: String = "Player") {
+        var edit = sharedPreferences.edit()
+        var record = sharedPreferences.getString("sign", "Bot - 0")
+        if (score >= record!!.last().toInt()) {
+            edit.putString("sign", "$name - $score")
+            edit.apply()
+        }
     }
 }
