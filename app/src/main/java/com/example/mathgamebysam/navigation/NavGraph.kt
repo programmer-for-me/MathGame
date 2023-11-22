@@ -4,10 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
 import com.example.mathgamebysam.MainScreen
 import com.example.mathgamebysam.QuestionsScreen
-import com.example.mathgamebysam.QuizApp
 import com.example.mathgamebysam.SignsScreen
 import com.example.mathgamebysam.SplashScreen
 

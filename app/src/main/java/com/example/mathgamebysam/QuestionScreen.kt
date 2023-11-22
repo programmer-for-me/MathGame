@@ -44,37 +44,52 @@ fun QuestionsScreen(navController: NavHostController) {
             )
         )
         Text(
-            text = "What is 5 + 5?"
+            text = questions.getQuestion(id)
         )
         Row (
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            var option1 = 0
-            var option2 = 0
-            var option3 = 0
-            var option4 = 0
+            var options = questions.getOptions(id)
+            var option1 = options[0]
+            var option2 = options[1]
+            var option3 = options[2]
+            var option4 = options[3]
             Button(
                 onClick = {
-
+                    if (questions.checkAnswer(id, option1))
+                        score ++
+                    id ++
                 }
             ) {
-                Text(text = "10")
+                Text(text = "$option1")
             }
             Button(
-                onClick = {}
+                onClick = {
+                    if (questions.checkAnswer(id, option2))
+                        score ++
+                    id ++
+                }
             ) {
-                Text(text = "10")
+                Text(text = "$option2")
             }
             Button(
-                onClick = {}
+                onClick = {
+                    if (questions.checkAnswer(id, option3))
+                        score ++
+                    id ++
+                }
             ) {
-                Text(text = "10")
+                Text(text = "$option3")
             }
             Button(
-                onClick = {}
+                onClick = {
+                    if (questions.checkAnswer(id, option4))
+                        score ++
+                    id ++
+                }
             ) {
-                Text(text = "10")
+                Text(text = "$option4")
             }
         }
     }
@@ -82,7 +97,7 @@ fun QuestionsScreen(navController: NavHostController) {
 
 @Preview
 @Composable
-private fun TestUI() {
+private fun QuestionsScreenPreview() {
     val navController = rememberNavController()
     NavGraph(navController = navController)
     SignsScreen(navController = navController)

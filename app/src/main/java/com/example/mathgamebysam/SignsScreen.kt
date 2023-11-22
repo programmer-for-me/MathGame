@@ -66,7 +66,7 @@ fun SignsScreen (navController: NavHostController){
             backgroundColor = Color.Green,
             textColor = Color.White,
             onClick = {
-                signs.goto("plus", navController)
+                signs.goto("questions_screen", navController)
             }
         )
 
@@ -75,7 +75,7 @@ fun SignsScreen (navController: NavHostController){
             backgroundColor = Color.Blue,
             textColor = Color.White,
             onClick = {
-                signs.goto("minus", navController)
+                signs.goto("questions_screen", navController)
             }
         )
 
@@ -84,7 +84,7 @@ fun SignsScreen (navController: NavHostController){
             backgroundColor = Color.Magenta,
             textColor = Color.White,
             onClick = {
-                signs.goto("multiply", navController)
+                signs.goto("questions_screen", navController)
             }
         )
 
@@ -93,7 +93,7 @@ fun SignsScreen (navController: NavHostController){
             backgroundColor = Color.Red,
             textColor = Color.White,
             onClick = {
-                signs.goto("divide", navController)
+                signs.goto("questions_screen", navController)
             }
         )
     }
